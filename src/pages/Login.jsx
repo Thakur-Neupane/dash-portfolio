@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("a@a.com"); // Set initial value for email
+  const [password, setPassword] = useState("123456789"); // Set initial value for password
   const { loading, isAuthenticated, error } = useSelector(
     (state) => state.user
   );
@@ -48,7 +48,7 @@ const Login = () => {
                 id="email"
                 type="email"
                 placeholder="m@example.com"
-                value={email}
+                value={email} // Bind value to state variable
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -65,15 +65,15 @@ const Login = () => {
               </div>
               <Input
                 type="password"
-                value={password}
+                value={password} // Bind value to state variable
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             {loading ? (
-              <SpecialLoadingButton content={"Loggin In"} />
+              <SpecialLoadingButton content={"Logging In"} />
             ) : (
               <Button
-                onClick={() => handleLogin(email, password)}
+                onClick={handleLogin} // Pass email and password directly in the function call
                 className="w-full"
               >
                 Login
@@ -82,6 +82,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+
       <div className="flex justify-center items-center bg-muted">
         <img src="/login.png" alt="login" />
       </div>
